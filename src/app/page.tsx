@@ -1,13 +1,40 @@
+'use client'
+
 import Image from 'next/image'
 import styles from './page.module.css'
+import { useState } from 'react'
+import { submitCookieToStorage, readCookieStorage, submitIronSessionCookieToStorage, readIronSessionCookieStorage} from './actions'
 
 export default function Home() {
+  const [currentCookie, setCurrentCookie] = useState('')
+  const [readCookieFromStorage, setReadCookieFromStorage] = useState('')
+  const handleSubmitCookie = async () => {
+    submitCookieToStorage(currentCookie)
+  }
+  const handleReadCookieStorage = async () => {
+    const cookieInStorage = await readCookieStorage()
+    setReadCookieFromStorage(cookieInStorage)
+  }
+  const handleSubmitIronSessionCookie = async () => {
+    submitIronSessionCookieToStorage(currentCookie)
+  }
+  const handleReadIronSessionCookieStorage = async () => {
+    const cookieInStorage = await readIronSessionCookieStorage()
+    setReadCookieFromStorage(cookieInStorage)
+  }
   return (
     <main className={styles.main}>
       <div className={styles.description}>
         <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
+          Current Cookie: &nbsp;
+          <input
+            type="text"
+            id="currentCookie"
+            name="currentCookie"
+            placeholder="Enter Value Here"
+            value={currentCookie}
+            onChange={(event) => setCurrentCookie(event.target.value)}
+          />
         </p>
         <div>
           <a
@@ -40,55 +67,52 @@ export default function Home() {
       </div>
 
       <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+        <div
           className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
+          onClick={handleSubmitCookie}
         >
           <h2>
-            Docs <span>-&gt;</span>
+            Set Cookie to Cookie Storage <span>-&gt;</span>
           </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+          <p>Set Current Cookie:&nbsp;
+            <b>{currentCookie || "Not Set Yet"} </b>
+            to storage</p>
+        </div>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+        <div
           className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+          onClick={handleReadCookieStorage}
+         >
           <h2>
-            Learn <span>-&gt;</span>
+            Read Cookie Storage <span>-&gt;</span>
           </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
+          <p>Read Cookie From Storage:&nbsp;
+            <b>{readCookieFromStorage || "Not Read Yet"} </b>
           </p>
-        </a>
+        </div>
+        <div
+          className={styles.card}
+          onClick={handleSubmitIronSessionCookie}
+        >
+          <h2>
+            Set Encrpyted Iron Session Cookie to Cookie Storage <span>-&gt;</span>
+          </h2>
+          <p>Set Encrypted Cookie:&nbsp;
+            <b>{currentCookie || "Not Set Yet"} </b>
+            to storage</p>
+        </div>
+
+        <div
+          className={styles.card}
+          onClick={handleReadIronSessionCookieStorage}
+        >
+          <h2>
+            Read Decrypted Cookie Storage <span>-&gt;</span>
+          </h2>
+          <p>Read Decrypted Cookie From Storage:&nbsp;
+            <b>{readCookieFromStorage || "Not Read Yet"} </b>
+          </p>
+        </div>
       </div>
     </main>
   )

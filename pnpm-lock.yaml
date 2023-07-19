@@ -20,6 +20,9 @@ dependencies:
   eslint-config-next:
     specifier: 13.4.10
     version: 13.4.10(eslint@8.45.0)(typescript@5.1.6)
+  iron-session:
+    specifier: 8.0.0-alpha.0
+    version: 8.0.0-alpha.0
   next:
     specifier: 13.4.10
     version: 13.4.10(react-dom@18.2.0)(react@18.2.0)
@@ -1331,6 +1334,10 @@ packages:
       get-intrinsic: 1.2.1
       has: 1.0.3
       side-channel: 1.0.4
+    dev: false
+
+  /iron-session@8.0.0-alpha.0:
+    resolution: {integrity: sha512-ch+DuhMMUqu5sELe5/bxOZi/j1gzTD3wmbqfOscpdzcTEnxsuB/WzzQL0es4/dSEUdoFB/XLcE0jORvb90MVvQ==}
     dev: false
 
   /is-array-buffer@3.0.2:
