@@ -3,16 +3,23 @@
 import Image from 'next/image'
 import styles from './page.module.css'
 import { useState } from 'react'
-import { submitCookieToStorage, readCookieStorage, submitIronSessionCookieToStorage, readIronSessionCookieStorage} from './actions'
+import {
+  submitCookieToStorage,
+  submitCookieToStorageServerAction,
+  readCookieStorage, 
+  readCookieToStorageServerAction,
+  submitIronSessionCookieToStorage, 
+  readIronSessionCookieStorage
+} from './actions'
 
 export default function Home() {
   const [currentCookie, setCurrentCookie] = useState('')
   const [readCookieFromStorage, setReadCookieFromStorage] = useState('')
   const handleSubmitCookie = async () => {
-    submitCookieToStorage(currentCookie)
+    submitCookieToStorageServerAction(currentCookie)
   }
   const handleReadCookieStorage = async () => {
-    const cookieInStorage = await readCookieStorage()
+    const cookieInStorage = await readCookieToStorageServerAction()
     setReadCookieFromStorage(cookieInStorage)
   }
   const handleSubmitIronSessionCookie = async () => {
@@ -54,7 +61,6 @@ export default function Home() {
           </a>
         </div>
       </div>
-
       <div className={styles.center}>
         <Image
           className={styles.logo}

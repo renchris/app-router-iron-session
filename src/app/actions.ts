@@ -1,4 +1,16 @@
-//'use server' //remove and set serverActions to false in next.config.js to  disable server actions
+'use server' //remove and set serverActions to false in next.config.js to  disable server actions
+
+import { cookies } from "next/headers"
+
+export const submitCookieToStorageServerAction = async (cookie: string) => {
+  cookies().set('cookieName', cookie)
+}
+
+export const readCookieToStorageServerAction = async (): Promise<string> => {
+  const cookieStore = cookies()
+  const currentCookie = cookieStore.get('cookieName')
+  return currentCookie ? currentCookie.value : 'Cookie Not Found!'
+}
 
 export const submitCookieToStorage = async (cookie: string) => {
     await fetch('http://localhost:3000/api/submitCookie', {
