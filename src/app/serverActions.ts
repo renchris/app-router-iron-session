@@ -10,5 +10,5 @@ export const submitCookieToStorageServerAction = async (cookie: string) => {
 
 export const readCookieFromStorageServerAction = async (): Promise<string> => {
   const session = await getServerActionSession()
-  return session.cookieName || 'Cookie Not Found!'
+  return session.cookieName || 'No Cookie Stored!'
 }

@@ -1,4 +1,3 @@
-import { cookies } from 'next/headers'
 import { getSession } from '../../../../lib/session'
 
 export async function POST(request: Request) {
