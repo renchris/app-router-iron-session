@@ -1,9 +1,10 @@
+import { cookies } from 'next/headers'
 import { getSession } from '../../../../lib/session'
 
 export async function POST(request: Request) {
   try {
     const requestBody = await request.json()
-    const { cookie } : { cookie: string } = requestBody
+    const { cookie }: { cookie: string } = requestBody
     const response = new Response()
     const session = await getSession(request, response)
     session.cookieName = cookie

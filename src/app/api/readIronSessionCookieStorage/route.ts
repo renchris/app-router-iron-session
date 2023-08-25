@@ -8,8 +8,8 @@ export async function GET() {
     const cookieStore = cookies()
     const currentCookieValue = cookieStore.get('cookieName')?.value || ''
     const decryptedCookie: IronSessionData = currentCookieValue ? await unsealData(currentCookieValue, {
-        password: sessionOptions.password
-    }) : { cookieName: 'No Cookie Stored'}
+      password: sessionOptions.password
+    }) : { cookieName: 'No Cookie Stored' }
     return NextResponse.json({ cookieInStorage: decryptedCookie.cookieName })
   } catch (error: unknown) {
     console.error((error as Error).message)
