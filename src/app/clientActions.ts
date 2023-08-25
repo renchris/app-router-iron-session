@@ -1,16 +1,5 @@
 'use client'
 
-export const submitCookieToStorageUseClient = async (cookie: string) => {
-  await fetch('http://localhost:3000/api/submitCookie', {
-    method: 'POST',
-    body: JSON.stringify({
-      cookie,
-    }),
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })
-}
 export const submitIronSessionCookieToStorage = async (cookie: string) => {
   await fetch('http://localhost:3000/api/submitIronSessionCookie', {
     method: 'POST',
