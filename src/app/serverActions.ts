@@ -2,13 +2,13 @@
 
 import { getServerActionSession } from '../../lib/session'
 
-export const submitCookieToStorageServerActionIronSession = async (cookie: string) => {
+export const submitCookieToStorageServerAction = async (cookie: string) => {
   const session = await getServerActionSession()
   session.cookieName = cookie
   await session.save()
 }
 
-export const readCookieFromStorageServerActionIronSession = async (): Promise<string> => {
+export const readCookieFromStorageServerAction = async (): Promise<string> => {
   const session = await getServerActionSession()
   return session.cookieName || 'Cookie Not Found!'
 }

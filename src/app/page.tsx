@@ -5,11 +5,11 @@ import styles from './page.module.css'
 import { useState } from 'react'
 import {
   submitCookieToStorageServerAction,
-  readCookieToStorageServerAction,
-} from './actions'
+  readCookieFromStorageServerAction,
+} from './serverActions'
 import {
-  submitIronSessionCookieToStorage,
-  readIronSessionCookieFromStorage
+  submitCookieToStorageRouteHandler,
+  readCookieFromStorageRouteHandler
 } from './clientActions'
 
 export default function Home() {
@@ -19,14 +19,14 @@ export default function Home() {
     submitCookieToStorageServerAction(currentCookie)
   }
   const handleReadCookieViaServerAction = async () => {
-    const cookieFromStorage = await readCookieToStorageServerAction()
+    const cookieFromStorage = await readCookieFromStorageServerAction()
     setReadCookieFromStorage(cookieFromStorage)
   }
   const handleSubmitCookieViaRouteHandler = async () => {
-    submitIronSessionCookieToStorage(currentCookie)
+    submitCookieToStorageRouteHandler(currentCookie)
   }
   const handleReadCookieViaRouteHandler = async () => {
-    const cookieFromStorage = await readIronSessionCookieFromStorage()
+    const cookieFromStorage = await readCookieFromStorageRouteHandler()
     setReadCookieFromStorage(cookieFromStorage)
   }
   return (

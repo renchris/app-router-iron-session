@@ -1,6 +1,6 @@
 'use client'
 
-export const submitIronSessionCookieToStorage = async (cookie: string) => {
+export const submitCookieToStorageRouteHandler = async (cookie: string) => {
   await fetch('http://localhost:3000/api/submitIronSessionCookie', {
     method: 'POST',
     body: JSON.stringify({
@@ -12,8 +12,8 @@ export const submitIronSessionCookieToStorage = async (cookie: string) => {
   })
 }
 
-export const readIronSessionCookieFromStorage = async (): Promise<string> => {
-  const responseWithCookieFromStorage = await fetch('http://localhost:3000/api/readIronSessionCookieStorage', {
+export const readCookieFromStorageRouteHandler = async (): Promise<string> => {
+  const responseWithCookieFromStorage = await fetch('http://localhost:3000/api/readIronSessionCookie', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
