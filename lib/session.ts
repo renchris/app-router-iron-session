@@ -1,6 +1,8 @@
 import {
-  IronSessionOptions, getIronSession, IronSessionData,
+  IronSessionOptions, getIronSession, IronSessionData, getServerActionIronSession
 } from 'iron-session'
+
+import { cookies } from 'next/headers';
 
 export const sessionOptions: IronSessionOptions = {
   password: 'change-this-this-is-not-a-secure-password',
@@ -21,7 +23,12 @@ const getSession = async (req: Request, res: Response) => {
   return session
 }
 
+const getServerActionSession = async () => {
+  const session = getServerActionIronSession<IronSessionData>(sessionOptions, cookies())
+  return session
+}
+
 export {
-    getSession,
-  }
-  
+  getSession,
+  getServerActionSession
+}
