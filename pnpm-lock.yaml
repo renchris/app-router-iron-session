@@ -21,8 +21,8 @@ dependencies:
     specifier: 13.4.10
     version: 13.4.10(eslint@8.45.0)(typescript@5.1.6)
   iron-session:
-    specifier: 8.0.0-alpha.0
-    version: 8.0.0-alpha.0
+    specifier: github:renchris/iron-session#v8-as-dependency
+    version: github.com/renchris/iron-session/e97de8bee59e975aa0f392b42cd27e090c337aad
   next:
     specifier: 13.4.10
     version: 13.4.10(react-dom@18.2.0)(react@18.2.0)
@@ -1336,10 +1336,6 @@ packages:
       side-channel: 1.0.4
     dev: false
 
-  /iron-session@8.0.0-alpha.0:
-    resolution: {integrity: sha512-ch+DuhMMUqu5sELe5/bxOZi/j1gzTD3wmbqfOscpdzcTEnxsuB/WzzQL0es4/dSEUdoFB/XLcE0jORvb90MVvQ==}
-    dev: false
-
   /is-array-buffer@3.0.2:
     resolution: {integrity: sha512-y+FyyR/w8vfIRq4eQcM1EYgSTnmHXPqaF+IgzgraytCFq5Xh8lllDVmAZolPJiZttZLeFSINPYMaEJ7/vWUa1w==}
     dependencies:
@@ -2326,4 +2322,10 @@ packages:
 
   /zod@3.21.4:
     resolution: {integrity: sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==}
+    dev: false
+
+  github.com/renchris/iron-session/e97de8bee59e975aa0f392b42cd27e090c337aad:
+    resolution: {tarball: https://codeload.github.com/renchris/iron-session/tar.gz/e97de8bee59e975aa0f392b42cd27e090c337aad}
+    name: iron-session
+    version: 8.0.0-alpha.0
     dev: false
