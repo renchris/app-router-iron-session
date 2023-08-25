@@ -4,30 +4,30 @@ import Image from 'next/image'
 import styles from './page.module.css'
 import { useState } from 'react'
 import {
-  submitCookieToStorage,
   submitCookieToStorageServerAction,
-  readCookieStorage, 
   readCookieToStorageServerAction,
-  submitIronSessionCookieToStorage, 
-  readIronSessionCookieStorage
 } from './actions'
+import {
+  submitIronSessionCookieToStorage,
+  readIronSessionCookieFromStorage
+} from './clientActions'
 
 export default function Home() {
   const [currentCookie, setCurrentCookie] = useState('')
   const [readCookieFromStorage, setReadCookieFromStorage] = useState('')
-  const handleSubmitCookie = async () => {
+  const handleSubmitCookieViaServerAction = async () => {
     submitCookieToStorageServerAction(currentCookie)
   }
-  const handleReadCookieStorage = async () => {
-    const cookieInStorage = await readCookieToStorageServerAction()
-    setReadCookieFromStorage(cookieInStorage)
+  const handleReadCookieViaServerAction = async () => {
+    const cookieFromStorage = await readCookieToStorageServerAction()
+    setReadCookieFromStorage(cookieFromStorage)
   }
-  const handleSubmitIronSessionCookie = async () => {
+  const handleSubmitCookieViaRouteHandler = async () => {
     submitIronSessionCookieToStorage(currentCookie)
   }
-  const handleReadIronSessionCookieStorage = async () => {
-    const cookieInStorage = await readIronSessionCookieStorage()
-    setReadCookieFromStorage(cookieInStorage)
+  const handleReadCookieViaRouteHandler = async () => {
+    const cookieFromStorage = await readIronSessionCookieFromStorage()
+    setReadCookieFromStorage(cookieFromStorage)
   }
   return (
     <main className={styles.main}>
@@ -75,10 +75,10 @@ export default function Home() {
       <div className={styles.grid}>
         <div
           className={styles.card}
-          onClick={handleSubmitCookie}
+          onClick={handleSubmitCookieViaServerAction}
         >
           <h2>
-            Set Cookie to Cookie Storage <span>-&gt;</span>
+            Set Cookie via Server Action <span>-&gt;</span>
           </h2>
           <p>Set Current Cookie:&nbsp;
             <b>{currentCookie || "Not Set Yet"} </b>
@@ -87,10 +87,10 @@ export default function Home() {
 
         <div
           className={styles.card}
-          onClick={handleReadCookieStorage}
-         >
+          onClick={handleReadCookieViaServerAction}
+        >
           <h2>
-            Read Cookie Storage <span>-&gt;</span>
+            Read Cookie via Server Action <span>-&gt;</span>
           </h2>
           <p>Read Cookie From Storage:&nbsp;
             <b>{readCookieFromStorage || "Not Read Yet"} </b>
@@ -98,24 +98,24 @@ export default function Home() {
         </div>
         <div
           className={styles.card}
-          onClick={handleSubmitIronSessionCookie}
+          onClick={handleSubmitCookieViaRouteHandler}
         >
           <h2>
-            Set Encrpyted Iron Session Cookie to Cookie Storage <span>-&gt;</span>
+            Set Cookie via API Route Handler <span>-&gt;</span>
           </h2>
-          <p>Set Encrypted Cookie:&nbsp;
+          <p>Set Current Cookie:&nbsp;
             <b>{currentCookie || "Not Set Yet"} </b>
             to storage</p>
         </div>
 
         <div
           className={styles.card}
-          onClick={handleReadIronSessionCookieStorage}
+          onClick={handleReadCookieViaRouteHandler}
         >
           <h2>
-            Read Decrypted Cookie Storage <span>-&gt;</span>
+            Read Cookie via API Route Handler <span>-&gt;</span>
           </h2>
-          <p>Read Decrypted Cookie From Storage:&nbsp;
+          <p>Read Cookie From Storage:&nbsp;
             <b>{readCookieFromStorage || "Not Read Yet"} </b>
           </p>
         </div>
