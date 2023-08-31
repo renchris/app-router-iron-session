@@ -6,7 +6,7 @@ export async function POST(request: Request) {
     const { cookie }: { cookie: string } = requestBody
     const response = new Response()
     const session = await getSession(request, response)
-    session.cookieName = cookie
+    session.cookieVariable = cookie
     await session.save()
     return response
   } catch (error: unknown) {

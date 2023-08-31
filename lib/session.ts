@@ -6,7 +6,7 @@ import { cookies } from 'next/headers';
 
 export const sessionOptions: IronSessionOptions = {
   password: 'change-this-this-is-not-a-secure-password',
-  cookieName: 'cookieName',
+  cookieName: 'cookieNameInBrowser',
   cookieOptions: {
     secure: process.env.NODE_ENV === 'production',
   },
@@ -14,7 +14,7 @@ export const sessionOptions: IronSessionOptions = {
 
 declare module 'iron-session' {
   interface IronSessionData {
-    cookieName?: string;
+    cookieVariable?: string;
   }
 }
 
