@@ -22,7 +22,7 @@ dependencies:
     version: 13.4.10(eslint@8.45.0)(typescript@5.1.6)
   iron-session:
     specifier: github:renchris/iron-session#v8-as-dependency
-    version: github.com/renchris/iron-session/e97de8bee59e975aa0f392b42cd27e090c337aad
+    version: github.com/renchris/iron-session/86b514c85956f00db4975cb9a567d4b236616d09
   next:
     specifier: 13.5.5
     version: 13.5.5(react-dom@18.2.0)(react@18.2.0)
@@ -2320,8 +2320,8 @@ packages:
     engines: {node: '>=10'}
     dev: false
 
-  github.com/renchris/iron-session/e97de8bee59e975aa0f392b42cd27e090c337aad:
-    resolution: {tarball: https://codeload.github.com/renchris/iron-session/tar.gz/e97de8bee59e975aa0f392b42cd27e090c337aad}
+  github.com/renchris/iron-session/86b514c85956f00db4975cb9a567d4b236616d09:
+    resolution: {tarball: https://codeload.github.com/renchris/iron-session/tar.gz/86b514c85956f00db4975cb9a567d4b236616d09}
     name: iron-session
     version: 8.0.0-alpha.0
     dev: false
